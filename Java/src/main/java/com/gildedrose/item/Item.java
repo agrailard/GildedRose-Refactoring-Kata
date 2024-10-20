@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.item;
 
 public class Item {
 
@@ -14,25 +14,13 @@ public class Item {
 
     private boolean noLongerWorthAnythingAfterPeremption = false;
 
-    public Item(String name, int sellIn, int quality, boolean agedWell, boolean noLongerWorthAnythingAfterPeremption, boolean legendary) {
-        this(name, sellIn, quality, agedWell, noLongerWorthAnythingAfterPeremption);
-        this.legendary = legendary;
-    }
-
-    public Item(String name, int sellIn, int quality, boolean agedWell, boolean noLongerWorthAnythingAfterPeremption) {
-        this(name, sellIn, quality, agedWell);
-        this.noLongerWorthAnythingAfterPeremption = noLongerWorthAnythingAfterPeremption;
-    }
-
-    public Item(String name, int sellIn, int quality, boolean agedWell) {
-        this(name, sellIn, quality);
-        this.agedWell = agedWell;
-    }
-
-    public Item(String name, int sellIn, int quality) {
+    Item(String name, int sellIn, int quality, boolean agedWell, boolean noLongerWorthAnythingAfterPeremption, boolean legendary) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
+        this.agedWell = agedWell;
+        this.noLongerWorthAnythingAfterPeremption = noLongerWorthAnythingAfterPeremption;
+        this.legendary = legendary;
     }
 
     public void sellInMinusADay() {

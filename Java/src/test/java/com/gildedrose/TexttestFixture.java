@@ -1,20 +1,24 @@
 package com.gildedrose;
 
+import com.gildedrose.item.Item;
+import com.gildedrose.item.ItemBuilder;
+
 public class TexttestFixture {
     public static void main(String[] args) {
         System.out.println("OMGHAI!");
 
         Item[] items = new Item[] {
-                new Item("+5 Dexterity Vest", 10, 20), //
-                new Item("Aged Brie", 2, 0, true), //
-                new Item("Elixir of the Mongoose", 5, 7), //
-                new Item("Sulfuras, Hand of Ragnaros", 0, 80, false, false, true), //
-                new Item("Sulfuras, Hand of Ragnaros", -1, 80, false, false, true),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20, true, true),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49, true, true),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49, true, true),
+            new ItemBuilder().withName("+5 Dexterity Vest").withSellIn(10).withQuality(20).build(),
+            new ItemBuilder().withName("Aged Brie").withSellIn(2).withQuality(0).agedWell().build(),
+            new ItemBuilder().withName("Elixir of the Mongoose").withSellIn(5).withQuality(7).build(),
+            new ItemBuilder().withName("Sulfuras, Hand of Ragnaros").withSellIn(0).withQuality(80).legendary().build(),
+            new ItemBuilder().withName("Sulfuras, Hand of Ragnaros").withSellIn(-1).withQuality(80).legendary().build(),
+            new ItemBuilder().withName("Backstage passes to a TAFKAL80ETC concert").withSellIn(15).withQuality(20).agedWell().noLongerWorthAnythingAfterPeremption().build(),
+            new ItemBuilder().withName("Backstage passes to a TAFKAL80ETC concert").withSellIn(10).withQuality(49).agedWell().noLongerWorthAnythingAfterPeremption().build(),
+            new ItemBuilder().withName("Backstage passes to a TAFKAL80ETC concert").withSellIn(5).withQuality(49).agedWell().noLongerWorthAnythingAfterPeremption().build(),
                 // this conjured item does not work properly yet
-                new Item("Conjured Mana Cake", 3, 6) };
+            new ItemBuilder().withName("Conjured Mana Cake").withSellIn(3).withQuality(6).build()
+        };
 
         GildedRose app = new GildedRose(items);
 
