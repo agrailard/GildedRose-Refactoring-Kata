@@ -17,42 +17,36 @@ class GildedRose {
 
             decrementeNbJoursAvantPeremption(item);
 
-            majQualiteInit(item);
+            if (item.name.equals(ITEM_SULFURAS)) {
+                continue;
+            }
+
+            if (item.name.equals(ITEM_BRIE)){
+                gagneEnQualite(item);
+                if(estPerime(item)){
+                    gagneEnQualite(item);
+                }
+                continue;
+            }
+
+            if (item.name.equals(ITEM_BACKSTAGE)){
+                if(estPerime(item)){
+                    item.quality = 0;
+                    continue;
+                }
+                gagneEnQualite(item);
+                gagneEnQualiteAvantPeremption(item);
+                continue;
+            }
+
+            perdEnQualite(item);
 
             if (estPerime(item)) {
-                majQualiteApresPeremption(item);
+                perdEnQualite(item);
             }
         }
     }
 
-    private static void majQualiteApresPeremption(Item item) {
-
-        if (item.name.equals(ITEM_BACKSTAGE)) {
-            item.quality = 0;
-            return;
-        }
-        if (item.name.equals(ITEM_BRIE)) {
-            gagneEnQualite(item);
-            return;
-        }
-        perdEnQualite(item);
-    }
-
-
-    private static void majQualiteInit(Item item) {
-        if (!item.name.equals(ITEM_BRIE)
-                && !item.name.equals(ITEM_BACKSTAGE)) {
-            perdEnQualite(item);
-        } else {
-
-            gagneEnQualite(item);
-
-            if (item.name.equals(ITEM_BACKSTAGE)) {
-                gagneEnQualiteAvantPeremption(item);
-            }
-
-        }
-    }
 
     private static void gagneEnQualiteAvantPeremption(Item item) {
         if (resteNbJoursAvantPeremption(item, 10)) {
@@ -70,9 +64,7 @@ class GildedRose {
 
     private static void perdEnQualite(Item item) {
         if (item.quality > 0) {
-            if (!item.name.equals(ITEM_SULFURAS)) {
-                item.quality -= 1;
-            }
+            item.quality -= 1;
             if (item.name.equals(ITEM_CONJURED)) {
                 item.quality -= 1;
             }
